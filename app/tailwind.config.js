@@ -10,6 +10,20 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    container: {
+      center: true,
+    },
+    colors: {
+      primary: "var(--primary)",
+      black: "var(--black)",
+      white: "var(--white)",
+      grey: {
+        10: "var(--grey-10)",
+        50: "var(--grey-50)",
+        100: "var(--grey-100)",
+        200: "var(--grey-200)",
+      },
+    },
   },
   plugins: [],
 };
