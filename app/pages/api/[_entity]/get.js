@@ -21,5 +21,5 @@ export default async function handler(req, res) {
 
   mongodb.close();
 
-  res.status(200).json({ data });
+  res.status(200).json({ data: { [_entity]: data } });
 }
