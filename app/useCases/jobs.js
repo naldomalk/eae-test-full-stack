@@ -1,7 +1,7 @@
 export default {
-  _find: ({ level = { $regex: "" }, position = { $regex: "" } }) => ({
+  _find: ({ level = { $regex: "" }, role = { $regex: "" } }) => ({
     level,
-    position,
+    role,
   }),
   _sort: ({ _sort = "postedAt", _asc = -1 }) => ({}), // nao faz nada
 };

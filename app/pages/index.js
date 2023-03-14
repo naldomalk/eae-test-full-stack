@@ -5,14 +5,17 @@ import { api } from "@/services";
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState({});
-  const [params, setParams] = useState({ filters: null, _sort: 1 });
+  const [params, setParams] = useState({ _sort: 1 });
 
   const handles = {
     setLoading,
+
+    setParams,
+
     get: () =>
       api({
         method: "get",
-        route: `/api/jobs/get?${""}`,
+        route: `/api/jobs/get?${new URLSearchParams(params).toString()}`,
         setLoading,
         success: (res) => setData((data) => ({ ...res.data })),
       }),
@@ -20,7 +23,7 @@ export default function Home() {
 
   useEffect(() => {
     handles.get();
-  }, []);
+  }, [params]);
 
   return (
     <>

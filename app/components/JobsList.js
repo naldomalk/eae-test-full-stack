@@ -1,8 +1,10 @@
 export function JobsList({ data, handles }) {
   handles = {
     ...handles,
+
     onClick: () => alert("Hello world!"),
   };
+
   return data.jobs?.map((job) => (
     <div
       key={`job-${job.id}`}
@@ -46,7 +48,7 @@ export function JobsList({ data, handles }) {
       </div>
       <div className="py-4 text-sm text-primary">
         <div className="flex">
-          {job.tools?.map((tool) => (
+          {[job.role, ...(job.tools || [])].map((tool) => (
             <div
               key={`${job.id}-${tool}`}
               className="rounded bg-grey-50 hover:bg-primary hover:text-white py-1 px-4 mx-1"
