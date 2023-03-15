@@ -1,16 +1,19 @@
 import { useState, useEffect } from "react";
-import { Head, Loading, JobsFilter, JobsList } from "@/components";
+import { Head, Loading, JobsFilter, JobsSort, JobsList } from "@/components";
 import { api } from "@/services";
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState({});
-  const [params, setParams] = useState({ _sort: 1 });
+  const [params, setParams] = useState({});
+  const [sort, setSort] = useState(null);
 
   const handles = {
     setLoading,
 
     setParams,
+
+    setSort,
 
     get: () =>
       api({
@@ -28,10 +31,11 @@ export default function Home() {
   return (
     <>
       <Head />
-      <main className="container px-4">
+      <main className="px-4 py-32 bg-no-repeat bg-[url('/images/bg-header-mobile.svg')] md:bg-[url('/images/bg-header-desktop.svg')]">
         <Loading {...{ loading }} />
         <JobsFilter {...{ data, handles, params }} />
-        <JobsList {...{ data, handles }} />
+        <JobsSort {...{ data, handles, sort }} />
+        <JobsList {...{ data, handles, sort }} />
       </main>
     </>
   );

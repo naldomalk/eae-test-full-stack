@@ -8,6 +8,11 @@ export function JobsFilter({ handles, params }) {
         [field]: value,
       })),
 
+    onClear: () => {
+      handles.setParams({});
+      handles.setSort(null);
+    },
+
     onRemoveFilter: (param) => {
       const newParams = { ...{}, ...params };
 
@@ -18,13 +23,14 @@ export function JobsFilter({ handles, params }) {
   };
 
   return (
-    <section className="container grid grid-cols-2 bg-white py-4 my-6">
+    <section className="container grid grid-cols-2 shadow-lg bg-white py-4 z-10">
       <div className="flex grow text-sm">
         {!params.role && (
           <div className="px-4">
             <label htmlFor="role">Role:</label>
             <select
               id="role"
+              className="border w-20 md:border-0"
               onChange={(e) =>
                 handles.onFilter({ field: "role", value: e.target.value })
               }
@@ -40,6 +46,7 @@ export function JobsFilter({ handles, params }) {
             <label htmlFor="level">Level:</label>
             <select
               id="level"
+              className="border w-20 md:border-0"
               onChange={(e) =>
                 handles.onFilter({ field: "level", value: e.target.value })
               }
@@ -69,7 +76,7 @@ export function JobsFilter({ handles, params }) {
           ))}
       </div>
       <div className="text-right px-4">
-        <a className="underline" onClick={() => handles.setParams({})} href="#">
+        <a className="underline" onClick={() => handles.onClear()} href="#">
           Clear
         </a>
       </div>

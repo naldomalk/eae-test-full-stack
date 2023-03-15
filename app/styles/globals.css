@@ -2,8 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  font-size: 12;
+}
+
 body {
   background-color: var(--grey-10);
+  font-size: 15px !important;
+}
+
+main {
+  z-index: 10;
 }
 
 :root {
@@ -16,4 +25,6 @@ body {
 
   --black: #000;
   --white: #fff;
+
+  --bd-desktop: "/images/bg-header-desktop.svg";
 }

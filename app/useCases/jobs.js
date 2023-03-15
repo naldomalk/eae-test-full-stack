@@ -3,5 +3,6 @@ export default {
     level,
     role,
   }),
-  _sort: ({ _sort = "postedAt", _asc = -1 }) => ({}), // nao faz nada
+
+  _sort: ({ _sort = "postedAt" }) => ({}), // nao faz nada
 };
